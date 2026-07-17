@@ -1,0 +1,324 @@
+/* ============================================================
+   RIVALISTA — static rebuild of rivalista.io (Squarespace clone)
+   Desktop layout (≥901px) mirrors the live Squarespace fluid grid:
+   each section is a fixed-aspect canvas (1265px reference width)
+   and every block is absolutely positioned in % of that canvas.
+   Below 900px, sections fall back to a stacked flow (Squarespace
+   serves its own separate mobile layout; this is the equivalent).
+   ============================================================ */
+
+/* ---------- Fonts (self-hosted; replaces Squarespace's Adobe
+   "Tablet Gothic Condensed" which dies with the subscription) --- */
+@font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 400; font-display: swap; src: url('../assets/fonts/barlow-condensed-400.woff2') format('woff2'); }
+@font-face { font-family: 'Barlow Condensed'; font-style: italic; font-weight: 400; font-display: swap; src: url('../assets/fonts/barlow-condensed-400i.woff2') format('woff2'); }
+@font-face { font-family: 'Barlow Condensed'; font-style: italic; font-weight: 700; font-display: swap; src: url('../assets/fonts/barlow-condensed-700i.woff2') format('woff2'); }
+@font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 800; font-display: swap; src: url('../assets/fonts/barlow-condensed-800.woff2') format('woff2'); }
+@font-face { font-family: 'Barlow Condensed'; font-style: italic; font-weight: 800; font-display: swap; src: url('../assets/fonts/barlow-condensed-800i.woff2') format('woff2'); }
+
+:root {
+  --green: #6dbe45;        /* accent */
+  --green-light: #b2e797;  /* lightAccent / body + menu background */
+  --green-dark: #3f7a2a;   /* darkAccent */
+  --black: #000;
+  --white: #fff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--green-light);
+  color: var(--black);
+  font-family: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+
+/* ---------- Type scale (linear-in-vw fits measured on the live
+   site at 1000px and 1265px viewports — exact at every width) --- */
+h1 { font-size: calc(16px + 5.4vw); line-height: .984; letter-spacing: .01em; font-weight: 800; font-style: italic; text-transform: uppercase; }
+h2 { font-size: calc(16px + 4.2vw); line-height: 1.032; letter-spacing: .01em; font-weight: 800; font-style: italic; text-transform: uppercase; }
+h3 { font-size: calc(16px + 3vw); line-height: 1.08;  letter-spacing: .01em; font-weight: 800; font-style: italic; text-transform: uppercase; }
+h4 { font-size: calc(16px + 1.8vw); line-height: 1.128; letter-spacing: .01em; font-weight: 800; font-style: italic; text-transform: uppercase; }
+p  { font-size: calc(16px + 0.12vw); line-height: 1.3;   letter-spacing: .02em; }
+.p-large { font-size: calc(16px + 0.84vw); }
+p + p { margin-top: 1em; }
+
+.c-green      { color: var(--green); }
+.c-green-lt   { color: var(--green-light); }
+.c-green-dk   { color: var(--green-dark); }
+.c-black      { color: var(--black); }
+.c-white      { color: var(--white); }
+
+/* ---------- Fixed transparent header (logo + LinkedIn) ---------- */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 51px;
+  pointer-events: none;
+}
+.site-header a { pointer-events: auto; }
+.site-header .logo img { width: 328px; height: auto; }
+.header-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--green);
+}
+.header-social svg { width: 20px; height: 20px; fill: var(--white); }
+
+/* ---------- Section canvas system ---------- */
+.sec { position: relative; overflow: hidden; }
+.sec-bg,
+.sec-bg-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.sec-overlay { position: absolute; inset: 0; z-index: 0; }
+.blk { z-index: 1; }
+
+@media (min-width: 901px) {
+  .sec { aspect-ratio: var(--ar); }
+  .blk { position: absolute; }
+
+  /* HERO */
+  .hero-text { left: 15.65%; top: 34.37%; width: 72.57%; text-align: center; }
+  .hero-text h1 + h1 { margin-top: .36em; }
+
+  /* TAGLINE */
+  .tagline-gif  { left: 7.90%;  top: 3.29%;  width: 26.80%; }
+  .tagline-copy { left: 38.50%; top: 10.01%; width: 34.47%; }
+  .tagline-h1   { left: 42.37%; top: 43.35%; width: 53.60%; }
+
+  /* CUSTOM-BUILD */
+  .custom-img  { left: 49.96%; top: 0; width: 45.93%; height: 100%; }
+  .custom-img img { width: 100%; height: 100%; object-fit: contain; }
+  .custom-h3   { left: 4.03%;  top: 3.54%; width: 42.13%; }
+  .custom-for  { left: 30.83%; top: 57.0%; width: 19.13%; }
+
+  /* ONE AI. MANY JOBS. */
+  .jobs-img  { left: 7.90%;  top: 6.42%;  width: 45.53%; }
+  .jobs-img img { width: 100%; aspect-ratio: 576 / 534; object-fit: cover; }
+  .jobs-h1   { left: 46.56%; top: 6.42%;  width: 41.66%; }
+  .jobs-list { left: 54.30%; top: 34.25%; width: 26.17%; }
+
+  /* EXPONENTIAL */
+  .exp-text { left: 23.40%; top: 18.20%; width: 53.28%; text-align: center; }
+  .exp-text h3 + h3 { margin-top: .7em; }
+
+  /* ATTI */
+  .atti-fig     { left: 4.03%;  top: 6.80%;  width: 41.66%; }
+  .atti-head    { left: 50.40%; top: 6.80%;  width: 41.66%; }
+  .atti-intro   { left: 50.40%; top: 47.90%; width: 22.29%; }
+  .atti-caption1{ left: 50.40%; top: 89.16%; width: 22.29%; }
+  .atti-gif     { left: 73.60%; top: 47.90%; width: 22.29%; }
+  .atti-caption2{ left: 73.60%; top: 83.17%; width: 22.29%; }
+
+  /* SANTA */
+  .santa-h1  { left: 18.66%; top: 19.25%; width: 66.17%; text-align: center; }
+  .santa-btn { left: 39.84%; top: 61.70%; width: 20.32%; height: 18.84%; }
+
+  /* TEAM */
+  .team-title { left: 0; top: 13.38%; width: 100%; text-align: center; }
+  .team-row   { left: 0; top: 39.01%; width: 100%; display: flex; justify-content: center; gap: 7.90%; }
+  .team-card  { width: 17.07%; }
+
+  /* FOOTER */
+  .footer-info   { left: 38.81%; top: 19.88%; width: 22.29%; }
+  .footer-social { left: 73.60%; top: 19.88%; width: 22.29%; display: flex; justify-content: center; }
+  .footer-copy   { left: 77.47%; top: 64.46%; width: 18.50%; text-align: right; }
+
+  /* BIO PAGES — content-driven height, circle photo (matches live) */
+  .sec.bio-sec { aspect-ratio: auto; padding: 17vw 0 5vw; min-height: 40vw; }
+  .bio-photo   { position: absolute; left: 23.10%; top: 17vw; width: 18.00%; }
+  .bio-name    { position: static; margin-left: 42.20%; width: 40.90%; }
+  .bio-body    { position: static; margin-left: 42.20%; width: 40.90%; margin-top: .7em; }
+}
+
+/* ---------- Section-specific looks (all widths) ---------- */
+
+/* Hero */
+.sec.hero .sec-overlay { background: rgba(0, 0, 0, .35); }
+.sec.hero .sec-bg { object-position: 83.3% 20.8%; }
+
+/* Tagline */
+.tagline-copy p { font-weight: 700; color: var(--white); }
+.tagline-copy .c-green-dk { color: var(--green-dark); }
+.tagline-h1 h1 { color: var(--black); }
+
+/* Custom-build */
+.custom-h3 h3 { color: var(--green); }
+.custom-for { color: var(--white); font-weight: 700; }
+.custom-for p { font-weight: 700; }
+.custom-for ul { list-style: disc; padding-left: 1.3em; margin-top: .4em; }
+.custom-for li { font-size: calc(16px + 0.12vw); line-height: 1.3; letter-spacing: .02em; margin-top: .5em; }
+
+.custom-for li::marker, .jobs-list li::marker { font-size: .65em; }
+
+/* Jobs */
+.jobs-list p { font-weight: 700; }
+.jobs-list ul { list-style: disc; padding-left: 1.3em; margin-top: 1em; color: var(--green); }
+.jobs-list li { font-size: calc(16px + 0.12vw); line-height: 1.3; letter-spacing: .02em; font-weight: 700; margin-top: .5em; }
+
+/* Exponential */
+.exp-text { background: var(--green); padding: 32px 12px; }
+
+/* ATTI */
+.atti-fig .video-facade img, .atti-fig > img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.atti-intro img { width: 100%; aspect-ratio: 282 / 243; object-fit: cover; }
+.atti-fig figcaption { font-size: calc(16px + 0.12vw); line-height: 1.3; letter-spacing: .02em; margin-top: .6em; }
+.atti-head h4 { margin-top: .35em; }
+.atti-caption1 a, .atti-caption2 a { color: var(--green-dark); }
+
+/* ATTI video facade (YouTube lite embed) */
+.video-facade { position: relative; display: block; width: 100%; cursor: pointer; padding: 0; border: 0; background: none; }
+.video-facade .play-btn {
+  position: absolute; top: 50%; left: 50%;
+  width: 72px; height: 72px;
+  transform: translate(-50%, -50%);
+  fill: var(--white);
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.45));
+  pointer-events: none;
+}
+.video-facade iframe, .atti-fig iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; }
+
+/* Santa */
+#santa { background: var(--green-light); }
+#santa .sec-bg-video {
+  left: 4.03%; right: 4.03%; top: 10.6%; bottom: 10.6%;
+  width: 91.94%; height: 78.8%;
+  background: #000;
+}
+
+.santa-btn a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; height: 100%;
+  background: var(--green);
+  color: var(--white);
+  font-style: normal;
+  font-weight: 800;
+  font-size: calc(16px + 0.3vw);
+  line-height: 1.2;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  padding: 0 10%;
+}
+
+/* Team */
+.team-title p {
+  font-size: calc(16px + 4.2vw);
+  line-height: 1.3;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.team-card { text-align: center; }
+.team-card .headshot { width: 75%; margin: 0 auto; aspect-ratio: 162 / 163; object-fit: cover; border-radius: 50%; }
+.team-card h2 { font-size: calc(16px + 0.24vw); line-height: 1.03; color: var(--white); margin-top: 1.4em; }
+.team-card .role { font-size: 14.4px; line-height: 1.3; color: var(--white); letter-spacing: 0; margin-top: .25em; }
+.team-card .read-bio {
+  display: inline-block;
+  margin-top: 1.3em;
+  background: var(--black);
+  color: var(--green);
+  font-size: 12.8px;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: .02em;
+  padding: 17.92px 29.93px;
+}
+
+/* Footer */
+.footer-info p { color: var(--white); font-weight: 700; }
+.footer-info p + p { margin-top: .9em; }
+.footer-info a { color: var(--green); }
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--white);
+}
+.footer-social svg { width: 22px; height: 22px; fill: var(--black); }
+.footer-copy p { color: var(--white); font-size: 16px; }
+
+/* Bio pages */
+.bio-photo img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 50%; }
+body.bio .header-social { background: var(--black); }
+.bio-name p { font-weight: 700; }
+.bio-body a { color: var(--green); }
+
+/* ============================================================
+   MOBILE (≤900px) — stacked flow, equivalent of Squarespace's
+   separate mobile layout
+   ============================================================ */
+@media (max-width: 900px) {
+  h1 { font-size: clamp(36px, 11vw, 54px); }
+  h2 { font-size: clamp(30px, 9vw, 46px); }
+  h3 { font-size: clamp(26px, 7.5vw, 38px); }
+  h4 { font-size: clamp(20px, 5.5vw, 30px); }
+  p, .custom-for li, .jobs-list li, .atti-fig figcaption { font-size: 17px; }
+  .p-large { font-size: 19px; }
+
+  .site-header { padding: 14px 20px; }
+  .site-header .logo img { width: min(55vw, 260px); }
+
+  .sec {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 56px 24px;
+  }
+  .sec.hero { min-height: 72vh; justify-content: center; padding-top: 140px; }
+  .hero-text { text-align: center; }
+  .hero-text h1 + h1 { margin-top: 1em; }
+
+  .tagline-gif { width: 70%; margin: 0 auto; }
+  .custom-img { order: 3; width: 85%; margin: 0 auto; }
+  .jobs-img { width: 85%; margin: 0 auto; }
+
+  .exp-text { text-align: center; }
+  .exp-text h3 + h3 { margin-top: .6em; }
+
+  .atti-intro, .atti-gif { width: 70%; margin: 0 auto; }
+  .atti-caption1, .atti-caption2 { text-align: center; }
+
+  .santa-h1 { text-align: center; }
+  .santa-btn { align-self: center; }
+  #santa { background: var(--green-light); }
+#santa .sec-bg-video {
+  left: 4.03%; right: 4.03%; top: 10.6%; bottom: 10.6%;
+  width: 91.94%; height: 78.8%;
+  background: #000;
+}
+
+.santa-btn a { padding: 20px 32px; }
+
+  .team-title { text-align: center; }
+  .team-row { display: flex; flex-direction: column; align-items: center; gap: 40px; }
+  .team-card { width: min(70vw, 260px); }
+
+  .footer-social { justify-content: center; }
+  .footer-copy { text-align: center; }
+
+  .bio-photo { width: min(65vw, 300px); margin: 90px auto 0; }
+  .sec.bio-sec { padding-top: 140px; }
+}
