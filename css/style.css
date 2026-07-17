@@ -122,11 +122,9 @@ p + p { margin-top: 1em; }
   .atti-intro   { left: 50.40%; top: 47.90%; width: 22.29%; }
   .atti-caption1{ left: 50.40%; top: 89.16%; width: 22.29%; }
   .atti-gif     { left: 73.60%; top: 47.90%; width: 22.29%; }
-  .atti-caption2{ left: 73.60%; top: 83.17%; width: 22.29%; }
 
   /* SANTA */
   .santa-h1  { left: 18.66%; top: 19.25%; width: 66.17%; text-align: center; }
-  .santa-btn { left: 39.84%; top: 61.70%; width: 20.32%; height: 18.84%; }
 
   /* TEAM */
   .team-title { left: 0; top: 13.38%; width: 100%; text-align: center; }
@@ -178,7 +176,7 @@ p + p { margin-top: 1em; }
 .atti-intro img { width: 100%; aspect-ratio: 282 / 243; object-fit: cover; }
 .atti-fig figcaption { font-size: calc(16px + 0.12vw); line-height: 1.3; letter-spacing: .02em; margin-top: .6em; }
 .atti-head h4 { margin-top: .35em; }
-.atti-caption1 a, .atti-caption2 a { color: var(--green-dark); }
+.atti-caption1 a { color: var(--green-dark); }
 
 /* ATTI video facade (YouTube lite embed) */
 .video-facade { position: relative; display: block; width: 100%; cursor: pointer; padding: 0; border: 0; background: none; }
@@ -200,23 +198,6 @@ p + p { margin-top: 1em; }
   background: #000;
 }
 
-.santa-btn a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%; height: 100%;
-  background: var(--green);
-  color: var(--white);
-  font-style: normal;
-  font-weight: 800;
-  font-size: calc(16px + 0.3vw);
-  line-height: 1.2;
-  letter-spacing: .01em;
-  text-transform: uppercase;
-  text-align: center;
-  text-decoration: none;
-  padding: 0 10%;
-}
 
 /* Team */
 .team-title p {
@@ -299,18 +280,15 @@ body.bio .header-social { background: var(--black); }
   .exp-text h3 + h3 { margin-top: .6em; }
 
   .atti-intro, .atti-gif { width: 70%; margin: 0 auto; }
-  .atti-caption1, .atti-caption2 { text-align: center; }
+  .atti-caption1 { text-align: center; }
 
   .santa-h1 { text-align: center; }
-  .santa-btn { align-self: center; }
   #santa { background: var(--green-light); }
 #santa .sec-bg-video {
   left: 4.03%; right: 4.03%; top: 10.6%; bottom: 10.6%;
   width: 91.94%; height: 78.8%;
   background: #000;
 }
-
-.santa-btn a { padding: 20px 32px; }
 
   .team-title { text-align: center; }
   .team-row { display: flex; flex-direction: column; align-items: center; gap: 40px; }
