@@ -38,10 +38,10 @@ a { color: inherit; }
 
 /* ---------- Type scale (linear-in-vw fits measured on the live
    site at 1000px and 1265px viewports — exact at every width) --- */
-h1 { font-size: calc(16px + 5.4vw); line-height: .984; letter-spacing: .01em; font-weight: 800; font-style: italic; text-transform: uppercase; }
-h2 { font-size: calc(16px + 4.2vw); line-height: 1.032; letter-spacing: .01em; font-weight: 800; font-style: italic; text-transform: uppercase; }
-h3 { font-size: calc(16px + 3vw); line-height: 1.08;  letter-spacing: .01em; font-weight: 800; font-style: italic; text-transform: uppercase; }
-h4 { font-size: calc(16px + 1.8vw); line-height: 1.128; letter-spacing: .01em; font-weight: 800; font-style: italic; text-transform: uppercase; }
+h1 { font-size: calc(16px + 5.4vw); line-height: .85; letter-spacing: .01em; font-weight: 800; font-style: italic; text-transform: uppercase; }
+h2 { font-size: calc(16px + 4.2vw); line-height: .90; letter-spacing: .01em; font-weight: 800; font-style: italic; text-transform: uppercase; }
+h3 { font-size: calc(16px + 3vw); line-height: .95;  letter-spacing: .01em; font-weight: 800; font-style: italic; text-transform: uppercase; }
+h4 { font-size: calc(16px + 1.8vw); line-height: 1.0; letter-spacing: .01em; font-weight: 800; font-style: italic; text-transform: uppercase; }
 p  { font-size: calc(16px + 0.12vw); line-height: 1.3;   letter-spacing: .02em; }
 .p-large { font-size: calc(16px + 0.84vw); }
 p + p { margin-top: 1em; }
