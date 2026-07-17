@@ -116,12 +116,11 @@ p + p { margin-top: 1em; }
   .exp-text { left: 23.40%; top: 18.20%; width: 53.28%; text-align: center; }
   .exp-text h3 + h3 { margin-top: .7em; }
 
-  /* ATTI */
-  .atti-fig     { left: 4.03%;  top: 6.80%;  width: 41.66%; }
-  .atti-head    { left: 50.40%; top: 6.80%;  width: 41.66%; }
-  .atti-intro   { left: 50.40%; top: 47.90%; width: 22.29%; }
-  .atti-caption1{ left: 50.40%; top: 89.16%; width: 22.29%; }
-  .atti-gif     { left: 73.60%; top: 47.90%; width: 22.29%; }
+  /* ATTI (layout per 2026-07 mockup: big gif left, heading + post right, video below) */
+  .atti-gif   { left: 3.30%;  top: 3.60%;  width: 58.30%; }
+  .atti-head  { left: 62.80%; top: 4.50%;  width: 31.80%; }
+  .atti-intro { left: 64.60%; top: 44.00%; width: 31.30%; }
+  .atti-fig   { left: 19.10%; top: 58.80%; width: 35.90%; }
 
   /* SANTA */
   .santa-h1  { left: 18.66%; top: 19.25%; width: 66.17%; text-align: center; }
@@ -173,10 +172,9 @@ p + p { margin-top: 1em; }
 
 /* ATTI */
 .atti-fig .video-facade img, .atti-fig > img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-.atti-intro img { width: 100%; aspect-ratio: 282 / 243; object-fit: cover; }
+.atti-intro img { width: 100%; }
 .atti-fig figcaption { font-size: calc(16px + 0.12vw); line-height: 1.3; letter-spacing: .02em; margin-top: .6em; }
 .atti-head h4 { margin-top: .35em; }
-.atti-caption1 a { color: var(--green-dark); }
 
 /* ATTI video facade (YouTube lite embed) */
 .video-facade { position: relative; display: block; width: 100%; cursor: pointer; padding: 0; border: 0; background: none; }
@@ -279,8 +277,8 @@ body.bio .header-social { background: var(--black); }
   .exp-text { text-align: center; }
   .exp-text h3 + h3 { margin-top: .6em; }
 
-  .atti-intro, .atti-gif { width: 70%; margin: 0 auto; }
-  .atti-caption1 { text-align: center; }
+  .atti-intro, .atti-gif { width: 85%; margin: 0 auto; }
+  #atti .atti-head { order: -1; }
 
   .santa-h1 { text-align: center; }
   #santa { background: var(--green-light); }
