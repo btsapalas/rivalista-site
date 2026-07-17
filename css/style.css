@@ -123,7 +123,7 @@ p + p { margin-top: 1em; }
   .atti-fig   { left: 19.10%; top: 58.80%; width: 35.90%; }
 
   /* SANTA */
-  .santa-h1  { left: 18.66%; top: 19.25%; width: 66.17%; text-align: center; }
+  .santa-h1  { left: 18.66%; top: 50%; transform: translateY(-50%); width: 66.17%; text-align: center; }
 
   /* TEAM */
   .team-title { left: 0; top: 13.38%; width: 100%; text-align: center; }
@@ -191,8 +191,8 @@ p + p { margin-top: 1em; }
 /* Santa */
 #santa { background: var(--green-light); }
 #santa .sec-bg-video {
-  left: 4.03%; right: 4.03%; top: 10.6%; bottom: 10.6%;
-  width: 91.94%; height: 78.8%;
+  left: 4.03%; right: 4.03%; top: 7.85%; bottom: 7.85%;
+  width: 91.94%; height: 84.3%;
   background: #000;
 }
 
@@ -282,11 +282,7 @@ body.bio .header-social { background: var(--black); }
 
   .santa-h1 { text-align: center; }
   #santa { background: var(--green-light); }
-#santa .sec-bg-video {
-  left: 4.03%; right: 4.03%; top: 10.6%; bottom: 10.6%;
-  width: 91.94%; height: 78.8%;
-  background: #000;
-}
+
 
   .team-title { text-align: center; }
   .team-row { display: flex; flex-direction: column; align-items: center; gap: 40px; }
