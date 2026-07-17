@@ -52,9 +52,9 @@ p + p { margin-top: 1em; }
 .c-black      { color: var(--black); }
 .c-white      { color: var(--white); }
 
-/* ---------- Fixed transparent header (logo + LinkedIn) ---------- */
+/* ---------- Transparent header, anchored to page top (scrolls away) ---------- */
 .site-header {
-  position: fixed;
+  position: absolute;
   top: 0; left: 0; right: 0;
   z-index: 10;
   display: flex;
